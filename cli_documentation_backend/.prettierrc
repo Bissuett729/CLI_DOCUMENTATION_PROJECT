@@ -1,0 +1,18 @@
+{
+  "arrowParens": "avoid",
+  "singleQuote": true,
+  "endOfLine": "lf",
+  "plugins": [
+    "@prettier/plugin-pug",
+    "prettier-plugin-pkg",
+    "prettier-plugin-svelte"
+  ],
+  "overrides": [
+    {
+      "files": ".changeset/**/*",
+      "options": {
+        "singleQuote": false
+      }
+    }
+  ]
+}

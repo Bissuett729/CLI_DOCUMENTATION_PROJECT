@@ -1,0 +1,30 @@
+<section class="w-full h-full flex flex-col gap-2 relative px-6 py-6">
+    <div class="absolute top-1 right-3">
+        <button (click)="onNoClick()" class="text-red-500 hover:text-red-600 hover:bg-black/10 rounded-full py-1 px-2 outline-none">
+            <i class="ri-close-circle-line"></i>
+        </button>
+    </div>
+
+    <div class="w-full p-2 flex items-center justify-center font-medium text-textPrimaryLight dark:text-textPrimaryDark">
+        <span class="text-2xl font-medium">Nuevo comando para <span class="uppercase">{{dataGroup.type}}</span></span>
+    </div>
+
+    <form [formGroup]="createNewCommandForm" class="flex flex-col gap-4">
+        <div class="flex flex-col">
+            <label class="text-textPrimaryLight dark:text-textPrimaryDark" for="command">Nuevo comando:</label>
+            <textarea formControlName="newCommand" id="command" type="text" class="p-2 border dark:border-[#454545] text-textPrimaryLight dark:text-textPrimaryDark rounded-md outline-none bg-gray-100 dark:bg-[#3a3a3a]"></textarea>
+        </div>
+        <div class="flex flex-col">
+            <label class="text-textPrimaryLight dark:text-textPrimaryDark" for="command">Descripci&oacute;n:</label>
+            <textarea formControlName="description" id="command" type="text" class="p-2 border dark:border-[#454545] text-textPrimaryLight dark:text-textPrimaryDark rounded-md outline-none bg-gray-100 dark:bg-[#3a3a3a]"></textarea>
+        </div>
+        <div class="flex flex-col">
+            <label class="text-textPrimaryLight dark:text-textPrimaryDark" for="command">Ejemplo:</label>
+            <textarea formControlName="example" id="command" type="text" class="p-2 border dark:border-[#454545] text-textPrimaryLight dark:text-textPrimaryDark rounded-md outline-none bg-gray-100 dark:bg-[#3a3a3a]"></textarea>
+        </div>
+
+        <div class="w-full flex items-center justify-center">
+            <button (click)="generateNewCommand()" [disabled]="createNewCommandForm.invalid" class="bg-primary dark:disabled:bg-[#2d2d2e] disabled:bg-gray-400 text-white rounded-lg py-1 px-3 relative disabled:active:top-0 active:top-px">Agregar nuevo comentario</button>
+        </div>
+    </form>
+</section>

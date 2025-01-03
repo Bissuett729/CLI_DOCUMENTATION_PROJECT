@@ -1,0 +1,28 @@
+<aside 
+class="absolute z-50 w-64 h-full px-2 bg-layout-light border-r dark:border-r-[#303030] dark:bg-layout-dark transition-[left] duration-300 flex flex-col justify-between"
+[ngClass]="_signals.openSidebarLeft$() ? 'left-0' : '-left-64'">
+
+  <section class="flex flex-col">
+    <div class="h-16 w-full flex items-center justify-center border-b dark:border-b-[#303030]">
+      <span class="text-textPrimaryLight dark:text-textPrimaryDark tracking-widest font-medium text-lg select-none">CLI DOCUMENTATION</span>
+    </div>
+
+    <div class="flex flex-col gap-2 py-2">
+      @for (navButton of navMenus; track navButton._id) {
+        <button (click)="getCommandsOfGroupSelected(navButton._id)" [routerLink]="navButton.url" class="flex items-center p-2 select-none rounded-lg hover:bg-[#EAEDFB] dark:hover:bg-[#303343] text-black/70 dark:text-[#BEC0C9] gap-2" routerLink="profile" routerLinkActive="!bg-primary !text-white">
+          <i [class]="'ri-'+navButton.icon"></i>
+          <span>{{navButton.label}}</span>
+        </button>
+      }
+      <button (click)="openCreateNewDocumentationModal()" class="block md:hidden py-1 px-3 border dark:border-[#373737] bg-gray-100 hover:bg-gray-200 dark:bg-[#2e2e2e] dark:hover:bg-[#3e3e3e] rounded-md text-textPrimaryLight dark:text-textPrimaryDark">
+        Agregar nueva documentaci&oacute;n
+      </button>
+    </div>
+
+  </section>
+
+  <section class="flex flex-col items-center justify-center w-full py-2">
+    <span class="text-sm text-center text-textPrimaryLight dark:text-textPrimaryDark">© 2025 cli documentation.</span>
+  </section>
+
+</aside>

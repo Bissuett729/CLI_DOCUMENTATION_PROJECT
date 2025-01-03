@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'remixicon/fonts/remixicon.css';
+
+.shadow-global {
+  box-shadow: 0px 0px 10px -9px black;
+}
+
+.mat-mdc-dialog-surface:where(.dark, .dark *) {
+  background-color: #282828 !important;
+}

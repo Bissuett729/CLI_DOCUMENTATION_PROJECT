@@ -1,0 +1,46 @@
+<section class="w-full h-full p-4 overflow-y-auto flex flex-col gap-4">
+    <div class="flex items-center gap-3 flex-col md:flex-row md:justify-between">
+        @if (navMenu !== null) {
+            <span>
+                @if (navMenu.link !== '') {
+                    Link de la documentación: 
+                    <a class="text-blue-500 text-sm md:text-base" href="https://git-scm.com/doc" target="_blank" rel="noopener noreferrer">https://git-scm.com/doc</a>
+                }
+            </span>
+            <button (click)="openCreatenewCommandModal()" class="bg-primary text-white rounded-lg py-1 px-3 relative active:top-px">Añadir comando</button>
+        }
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 2xl:grid-cols-4 gap-4">
+        @for (command of commandsData; track command._id) {
+            <div class="col-span-1 py-4 px-6 flex flex-col gap-4 bg-card-light dark:bg-card-dark shadow rounded-lg border border-gray-200 dark:border-[#414141] hover:shadow-xl transform hover:-translate-y-1 
+            transition-[translate] duration-300">
+                <div class="w-full flex justify-between">
+                    <span class="py-0.5 px-6 rounded-2xl text-white" [style.background]="navMenu !== null ? getGradient(navMenu.colorLabel) : null">{{navMenu?.value}}</span>
+    
+                    <div class="flex gap-1">
+                        <button (click)="deleteCommandById(command._id)" matTooltip="Borrar" class="rounded-full py-1 px-2 hover:bg-black/5 dark:hover:bg-white/5 text-black dark:text-white/80">
+                            <i class="ri-delete-bin-line"></i>
+                        </button>
+
+                        <button (click)="copyCommandToClipboard(command.command)" matTooltip="Copiar" class="rounded-full py-1 px-2 hover:bg-black/5 dark:hover:bg-white/5 text-black dark:text-white/80">
+                            <i class="ri-clipboard-line"></i>
+                        </button>
+                    </div>
+                </div>
+    
+                <pre class="bg-gray-800 dark:bg-[#212324] text-gray-100 rounded-md p-4 overflow-auto">{{command.command}}</pre>
+    
+                <span class="text-sm text-gray-600 dark:text-textPrimaryDark">{{command.description}}</span>
+    
+                @if (command.includeExample) {
+                    <div class="flex flex-col gap-2">
+                        <span class="text-gray-700 font-medium dark:text-textPrimaryDark">Ejemplo:</span>
+    
+                        <pre class="bg-gray-100 dark:bg-[#404242] dark:text-textPrimaryDark rounded-md p-4 overflow-auto">{{command.example}}</pre>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>

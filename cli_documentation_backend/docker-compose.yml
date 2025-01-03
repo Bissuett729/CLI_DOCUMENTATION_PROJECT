@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+
+  mongo-cli-documentation:
+    image: mongo:6.0.8
+    container_name: CLI_DOCUMENTATION_DB_DEV
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: CLI_DOCUMENTATION_DB_DEV
+      MONGO_INITDB_ROOT_PASSWORD: CLI_DOCUMENTATION_DB_DEV_!23
+    volumes:
+      - ./mongo-data-dev:/data/db
+    ports:
+      - "27017:27017"
+    expose: 
+      - "27017"
+

@@ -1,0 +1,32 @@
+<header class="h-16 w-full bg-layout-light border-b dark:border-b-[#303030] dark:bg-layout-dark flex items-center justify-between px-4">
+  <div class="flex items-center justify-center gap-2">
+
+    <button class="sm:block md:hidden px-1 py-1 rounded-full hover:bg-[#eeeeee] dark:hover:bg-[#ffffff12] group/isButtonIcon" (click)="_signals.setSidebarLeft(!_signals.openSidebarLeft$())">
+      @if(_signals.openSidebarLeft$()) {
+        <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="text-textPrimaryLight dark:text-textPrimaryDark group-hover/isButtonIcon:text-black dark:group-hover/isButtonIcon:text-white"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg>
+      } @else {
+        <svg width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="text-textPrimaryLight dark:text-textPrimaryDark group-hover/isButtonIcon:text-black dark:group-hover/isButtonIcon:text-white"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 6l16 0" /><path d="M4 12l16 0" /><path d="M4 18l16 0" /></svg>
+      }
+    </button>
+
+    <span class="text-sm md:text-xl font-medium text-textPrimaryLight dark:text-textPrimaryDark">{{ _signals.labelHeader$() }}</span>
+
+  </div>
+
+  <div class="flex items-center gap-2">
+
+    <button (click)="openCreateNewDocumentationModal()" class="hidden md:block py-1 px-3 border dark:border-[#373737] bg-gray-100 hover:bg-gray-200 dark:bg-[#2e2e2e] dark:hover:bg-[#3e3e3e] rounded-md text-textPrimaryLight dark:text-textPrimaryDark">Agregar nueva documentaci&oacute;n</button>
+
+    <button 
+    class="px-1 py-1 rounded-full hover:bg-[#eeeeee] dark:hover:bg-[#ffffff12] group/isButtonIcon" 
+    (click)="_signals.setThemeDark(!_signals.themeDark$())"
+    [matTooltip]="_signals.themeDark$() ? 'Modo claro' : 'Modo oscuro'">
+      @if(_signals.themeDark$()) {
+        <svg width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="text-textPrimaryLight dark:text-textPrimaryDark group-hover/isButtonIcon:text-black dark:group-hover/isButtonIcon:text-white"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" /><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" /></svg>
+      } @else {
+        <svg width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="text-textPrimaryLight dark:text-textPrimaryDark group-hover/isButtonIcon:text-black dark:group-hover/isButtonIcon:text-white"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg>
+      }
+    </button>
+
+  </div>
+</header>
